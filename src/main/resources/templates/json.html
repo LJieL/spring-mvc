@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>tojson</title>
+<script th:src="@{webjars/jquery/3.2.1/jquery.js}"
+	type="text/javascript" charset="utf-8"></script>
+<script th:inline="javascript">
+	
+	var user = {"name":"yyf","id":1,"age":21};
+	$(function json() {
+	
+		$.post("testJson",{"param":JSON.stringify(user)},function(data){
+		
+			var list = JSON.parse(data);
+			for ( var i in list) {
+				$("#tb").append(
+						"<tr><td>" + list[i].name+ "</td>" + 
+						"<td>" + list[i].id + "</td>"+ 
+						"<td>" + list[i].age + "</td>" + 
+					</tr>");
+			} 
+		});
+	},"text");
+	
+	
+</script>
+</head>
+<body>
+<body>
+	<table id="tb" border="1px">
+		<tr>
+			<th>名字</th>
+			<th>ID</th>
+			<th>年龄</th>
+			
+		</tr>
+	</table>
+</body>
+</body>
+</html>
